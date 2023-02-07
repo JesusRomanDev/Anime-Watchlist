@@ -1,0 +1,228 @@
+:root{
+    --rojo: rgb(215, 45, 45); 
+    --titulo1: rgb(250, 244, 244); 
+    --titulo2: rgb(64, 63, 66); 
+    --transparente: rgba(95, 150, 101, 0);
+    --ff-primaria:'Prompt', sans-serif;
+}
+  
+html { 
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+  
+*, *:before, *:after {  
+  box-sizing: inherit;
+}
+  
+body{
+  font-size: 1.6rem;
+  font-family: var(--ff-primaria);
+  background-color: black;
+}
+  
+.contenedor{
+  max-width: 150rem;
+  width: 90%;
+  margin: 0 auto;
+}
+  
+img{
+    max-width: 100%;
+}
+  
+a{
+      text-decoration: none;
+}
+
+.margin-top{
+    margin: .5rem 0 0 0;
+}
+
+.margin-left{
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+/* Head */
+.fondo{
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width: 768px) { 
+    .fondo{
+        display: flex;
+        flex-direction: unset;
+        justify-content:space-between;
+        align-items: center;
+        background: linear-gradient(to right, var(--rojo) 30%, var(--transparente) 100%);
+        height: 15rem;
+    }
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.titulo{
+    font-size: 5rem;
+    color: transparent;
+    background: linear-gradient(to right, var(--titulo1) 85%, var(--titulo2) 100%); /* aqui le decimos el orden que va hacia la 
+    derecha y empieza con el color primario del 0% y luego el secundario al 100% */
+    background-clip: text; /* aqui le decimos que el color se vaya al texto y no al fondo */
+    -webkit-background-clip: text;
+    filter: drop-shadow(5px 5px #333);
+    margin: 0 0 0 5rem;
+}
+
+.icono{
+    position: absolute;
+    max-width: 6rem;
+    margin-left: 35rem;
+}
+
+.buscador{
+    display: flex;
+    border: .3rem solid rgb(7, 7, 7);
+    border-radius: .5rem;
+}
+
+.buscador__input{
+    border: none;
+    background-color: transparent;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    outline: none;
+}
+
+.buscador__input::placeholder{
+    color: #FFF;
+}
+
+.navegacion{
+    display: flex;
+    margin: 0 7rem 0 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.navegacion__color{
+    color: #FFF;
+    margin: 0 1rem;
+}
+
+/* Lista */
+.lista{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    row-gap: 5rem;
+    margin-top: 2rem;
+}
+
+.lista__titulo{
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.lista__titulo__stars{
+    display: flex;
+    align-items: center;
+}
+
+.garantia{
+    position: absolute;
+    background-color: rgb(232, 17, 17);
+    margin-left: 0;
+    overflow: hidden;
+    transform: rotate(-45deg);
+    line-height: 2rem;
+    
+}
+
+.stars{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    max-width: 50rem;
+    max-height: 40rem;
+    transition: 500ms;
+}
+
+.container:hover{
+    max-width: 55rem;
+    max-height: 45rem;
+    transition: 300ms;
+}
+
+.container__card{
+    border-radius: 1.5rem;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lista__titulo__texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.watchlistButton{
+    background-color: var(--rojo);
+    color: white;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+
+.watchlistHover{
+    display: none; /* escondemos para que no se muestra en la pantalla todo el tiempo al ser agregado un anime */
+}
+
+.menu:hover .watchlistHover{
+    display: flex; /* ahora si lo mostramos con un display block */
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    background-color: black;
+    min-height: 10rem;
+    min-width: 60rem;
+    border-radius: 1rem;
+    border-color: var(--rojo);
+    border-width: .2rem;
+    border-style: solid;
+    color: white;
+}
+
+/* Footer */
+
+.footer{
+    margin-top: 5rem;
+}
+
+.contenedor__footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobreMi{
+    color: white;
+}
+
+.redes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
