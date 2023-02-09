@@ -49,6 +49,20 @@ a{
     margin: 0;
 }
 
+.container__delete{
+    display: flex;
+    justify-content: center;
+    background-color: var(--rojo);
+    border-radius: .3rem;
+    min-width: 2rem;
+    align-items: center;
+}
+
+.delete{
+    color: white;
+    margin: none;
+}
+
 /* Head */
 .fondo{
     display: flex;
