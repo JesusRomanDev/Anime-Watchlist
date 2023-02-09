@@ -2,6 +2,7 @@
 const listaAnime = document.querySelector(".lista") //TODO EL CUADRO DONDE SE ALMACENAN TODOS LOS ANIMES
 const contenedorAnime = document.querySelector('.watchlistHover tbody');
 const eliminarAnime = document.querySelector('.menu');
+const navegacionHover = document.querySelector('.navegacion__color'); //pendiente de hacer funcion para mostrar el texto
 let listaWatchlist = [];
 
 //Event Listener
@@ -42,9 +43,17 @@ function leerDatosAnime(anime){ //el parametro "anime" toma toda la info de ese 
     }
     console.log(infoAnime);
 
-    //Revisando si ya existe el anime en la Lista de Watchlist
-    listaWatchlist = [...listaWatchlist, infoAnime];
-    console.log(listaWatchlist);
+    //Revisando los Duplicados, Revisando si ya existe el anime en la Lista de Watchlist
+    const existe = listaWatchlist.some( anime => anime.id === infoAnime.id); 
+    if (existe){ //si es true
+        const animes = listaWatchlist.map(anime => {
+         //retorna el objeto que no es duplicado, osease regresame todo el arreglo normal tal cual esta
+         return anime;
+        })
+    }else{ //si no existe agregame el nuevo con los que ya teniamos
+        listaWatchlist = [...listaWatchlist, infoAnime]; //infoAnime es el nuevo que se agregaria
+        console.log(listaWatchlist);
+    }
     animeHTML();
 }
 
