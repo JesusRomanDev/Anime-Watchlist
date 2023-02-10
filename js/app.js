@@ -47,7 +47,7 @@ function leerDatosAnime(anime){ //el parametro "anime" toma toda la info de ese 
     const existe = listaWatchlist.some( anime => anime.id === infoAnime.id); 
     if (existe){ //si es true
         const animes = listaWatchlist.map(anime => {
-         //retorna el objeto que no es duplicado, osease regresame todo el arreglo normal tal cual esta
+         //retorna el objeto que no es duplicado, osease regresame todo el arreglo normal tal cual esta, no hagas nada
          return anime;
         })
     }else{ //si no existe agregame el nuevo con los que ya teniamos
@@ -69,7 +69,7 @@ function animeHTML(){
         <td>${anime.genero}</td>
         <td><div class="container__delete"><a class="delete" data-id="${anime.id}" href="#">X</a></div></td>
         `
-        contenedorAnime.appendChild(row);
+        contenedorAnime.appendChild(row); //contenedorAnime que tiene el tbody, vamos a inyectarle un TR con el row creado
     });
 }
 
