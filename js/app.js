@@ -2,7 +2,7 @@
 const listaAnime = document.querySelector(".lista") //TODO EL CUADRO DONDE SE ALMACENAN TODOS LOS ANIMES
 const contenedorAnime = document.querySelector('.watchlistHover tbody');
 const eliminarAnime = document.querySelector('.menu');
-const navegacionHover = document.querySelector('.navegacion__color'); //pendiente de hacer funcion para mostrar el texto
+const navegacionHover = document.querySelector('.hover__vacio'); //pendiente de hacer funcion para mostrar el texto
 let listaWatchlist = [];
 
 //Event Listener
@@ -11,15 +11,31 @@ function cargarEventListeners(){
     listaAnime.addEventListener('click', agregarAnime); //se ejecuta esta funcion cuando se hace click sobre los animes
 
     eliminarAnime.addEventListener('click', eliminandoAnime); //se ejecuta para eliminar un anime de la lista
+
+    navegacionHover.addEventListener('mouseover', textoAnime); //se ejecuta cuando haces hover sobre la lista
 }
 
 //Funciones
+
+function textoAnime(){
+    if (listaWatchlist.length === 0 && contenedorAnime.innerHTML.trim() === ''){
+        const nuevoTexto = document.createElement('td');
+        nuevoTexto.textContent = "There's nothing yet on your Watchlist";
+        contenedorAnime.appendChild(nuevoTexto);
+    }
+}
 
 function eliminandoAnime(e){
     if (e.target.classList.contains('delete')){ //si al darle click tenemos algo con una clase de "delete" ejecuta lo siguiente
         const animeID = e.target.getAttribute('data-id') //sacamos el ID del target, para esto el ANCHOR debe tener un ID
         listaWatchlist = listaWatchlist.filter(anime => anime.id !== animeID); //filtrame todos menos el animeID que seleccionamos
+        textoAnime();
         animeHTML();
+    } 
+    if(listaWatchlist.length === 0 && contenedorAnime.innerHTML.trim() === ''){
+        const nuevoTexto = document.createElement('td');
+        nuevoTexto.textContent = "There's nothing yet on your Watchlist";
+        contenedorAnime.appendChild(nuevoTexto);
     }
 }
 
