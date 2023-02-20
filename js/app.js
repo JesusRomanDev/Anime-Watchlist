@@ -1,7 +1,8 @@
 //Variables
 const listaAnime = document.querySelector(".lista") //TODO EL CUADRO DONDE SE ALMACENAN TODOS LOS ANIMES
-const contenedorAnime = document.querySelector('.watchlistHover tbody');
-const eliminarAnime = document.querySelector('.menu');
+const contenedorAnime = document.querySelector('.watchlistHover tbody'); //donde se va a inyectar el HTML
+const eliminarAnime = document.querySelector('.menu'); //Eliminando anime de la lista uno por uno
+const eliminarAnimeLista = document.querySelector('.menu');//Vaciando Anime de Lista
 const navegacionHover = document.querySelector('.hover__vacio'); //pendiente de hacer funcion para mostrar el texto
 let listaWatchlist = [];
 
@@ -12,10 +13,33 @@ function cargarEventListeners(){
 
     eliminarAnime.addEventListener('click', eliminandoAnime); //se ejecuta para eliminar un anime de la lista
 
+    eliminarAnimeLista.addEventListener('click', vaciandoLista); //se ejecuta para vaciar TODA la lista de Anime
+
     navegacionHover.addEventListener('mouseover', textoAnime); //se ejecuta cuando haces hover sobre la lista
+
+    navegacionHover.addEventListener('mouseenter', vaciarAnime); //se ejecuta cuando haces hover sobre la lista
 }
 
 //Funciones
+
+function vaciandoLista(e){
+    if (e.target.classList.contains('vaciar__anime')){
+        limpiarAnime();
+        listaWatchlist.length = 0; //seteando el array a 0 para que funcione las condiciones del IF de textoAnime();
+        textoAnime();
+    }
+ }
+
+ function vaciarAnime(){
+    if(listaWatchlist.length > 0 && !contenedorAnime.innerHTML.includes("Vaciar Lista")){ //si el array tiene mas de 1 elemento
+        //yyyy QUE NO se tenga en el contenedorAnime dentro del HTML la palabra Vaciar Lista
+    const row2 = document.createElement('a');
+    row2.href = '#'; //agregamos eñ href para que aparezca como si le fueramos a dar click
+    row2.classList.add('vaciar__anime'); //agregamos una clase a el nuevo elemento creado
+    row2.textContent = 'Vaciar Lista';
+    contenedorAnime.appendChild(row2);
+    }
+ }
 
 function textoAnime(){
     if (listaWatchlist.length === 0 && contenedorAnime.innerHTML.trim() === ''){
@@ -37,6 +61,7 @@ function eliminandoAnime(e){
         nuevoTexto.textContent = "There's nothing yet on your Watchlist";
         contenedorAnime.appendChild(nuevoTexto);
     }
+    vaciarAnime(); //cada vez que eliminamos un anime llamamos a la funcion de vaciarAnime(); para que se muestre el texto de vaciar
 }
 
 function agregarAnime(e){

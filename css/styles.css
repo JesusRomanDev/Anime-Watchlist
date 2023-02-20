@@ -235,6 +235,14 @@ a{
     align-items: center;
     color: white;
 }
+
+.vaciar__anime{
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-bottom: 1rem;
+    background-color: var(--rojo);
+}
 /* Footer */
 
 .footer{
